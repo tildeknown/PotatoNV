@@ -10,7 +10,7 @@ Install requirements:
 pip install -r requirements.txt
 ```
 
-Unlock bootloader (writes key and then unlocks with it in unlocked fastboot):
+Unlock bootloader (boots to the unlocked fastboot, writes the key and unlocks):
 
 ```sh
 python main.py -b hisiXXX
