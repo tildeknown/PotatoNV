@@ -95,7 +95,7 @@ class ImageFlasher:
             self.send_data_frame(n + 1, f)
             n += 1
             length -= MAX_DATA_LEN
-            print(round(n/n_frames*100), "%")
+            print(round(n/n_frames*100), "%", end="\r")
         if length:
             if isinstance(data, bytes):
                 f = data[n * MAX_DATA_LEN:]
@@ -103,7 +103,7 @@ class ImageFlasher:
                 f = data.read()
             self.send_data_frame(n + 1, f)
             n += 1
-        print("100%")
+        print("100 %")
         self.send_tail_frame(n + 1)
         time.sleep(0.5)
 
