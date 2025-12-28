@@ -1,10 +1,31 @@
 # PotatoNV crossplatform
 
+CLI utility for unlocking Huawei devices on Kirin SoCs.
+
 ## Usage
+
+Install requirements:
 
 ```sh
 pip install -r requirements.txt
-python main.py
+```
+
+Unlock bootloader (writes key and then unlocks with it in unlocked fastboot):
+
+```sh
+python main.py -b hisiXXX
+```
+
+Boot to unlocked fastboot:
+
+```sh
+python main.py -b hisiXXX -S
+```
+
+Write unlock key:
+
+```sh
+python main.py -b hisiXXX -s -k 0123456789ABCDEF
 ```
 
 ## License
