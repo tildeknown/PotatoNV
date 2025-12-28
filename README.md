@@ -1,4 +1,14 @@
-Usrlock - CLI utility for unlocking Huawei devices on Kirin SoCs.
+# PotatoNV crossplatform
+
+## Usage
+
+```sh
+pip install -r requirements.txt
+python main.py
+```
+
+## License
+
 Copyright (C) 2019  Penn Mackintosh (penn5)
 Copyright (C) 2020  Andrey Smirnoff (mashed-potatoes)
 
