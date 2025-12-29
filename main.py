@@ -218,8 +218,6 @@ def write_nvme(key: str):
     fb.write_nvme("USRKEY", m.digest())
     fb.write_nvme("WVLOCK", key.encode())
     print("Bootloader code updated")
-    print("Rebooting device...")
-    fb.reboot()
 
 def main():
     args = setup()
