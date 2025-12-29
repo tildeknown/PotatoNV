@@ -122,7 +122,7 @@ class ImageFlasher:
                 if port.vid == IDT_VID and port.pid == IDT_PID:
                     print(f"Autoselecting {port.hwid} aka {port.description} at {port.device}")
                     if device:
-                        print("Multiple devices detected in IDT mode", critical=True)
+                        print("Multiple devices detected in IDT mode")
                     else:
                         device = port.device
             
@@ -130,7 +130,7 @@ class ImageFlasher:
                 sleep(1)
 
         if not device:
-            print("Need a device in IDT mode plugged in to this computer", critical=True)
+            print("Need a device in IDT mode plugged in to this computer")
         self.serial = serial.Serial(dsrdtr=True, rtscts=True, port=device.replace("COM", r"\\.\COM"), baudrate=IDT_BAUDRATE, timeout=1)
 
     def close(self):
@@ -163,7 +163,7 @@ class Fastboot:
         print(f"Writing {prop}")
         result = self.fb_dev.send(cmd)
         if "set nv ok" not in result:
-            print(f"Failed to write {prop}: {result}", critical=True)
+            print(f"Failed to write {prop}: {result}")
 
     def reboot(self):
         result = self.fb_dev.reboot()
@@ -188,13 +188,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     if not args.bootloader and not args.skip_bootloader:
         print("Use -b <bootloader> to choose bootloader.")
-        print("Bootloaders:", *os.listdir("./bootloaders"), sep="\n")
+        print("Bootloaders:", *[i for i in os.listdir("./bootloaders") if os.path.exists("./bootloaders/"+i+"/manifest.xml")], sep="\n")
         exit(1)
 
     args.manifest = f"./bootloaders/{args.bootloader}/manifest.xml"
 
     if not path.isfile(args.manifest):
-        print("Bootloader is invalid or not found!", critical=True)
+        print("Bootloader is invalid or not found!")
 
     if not args.key and not args.skip_write_key:
         args.key = "0123456789ABCDEF"
